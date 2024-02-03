@@ -1,0 +1,50 @@
+.logo{
+    width:3% ;
+    height:3% ;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.welcome-text {
+    padding-left: 1rem;
+}
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+.sidebar-link {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #333;
+    display: block;
+    text-decoration: none;
+}
+.sidebar-link:hover {
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+.custom-card-width {
+    max-width: 500px; /* Adjust this value to make the card thinner */
+    margin: auto; /* This centers the card horizontally */
+}
