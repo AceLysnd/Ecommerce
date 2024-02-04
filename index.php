@@ -47,33 +47,32 @@
             flex-grow: 1;
         }
         .card {
-            width: 100%; /* Set the width of cards to 100% of their container */
-            margin-bottom: 1rem; /* Add some space at the bottom of each card */
+            width: 100%; 
+            margin-bottom: 1rem;
             padding-bottom: 5px;
         }
         .product-card {
-        margin-bottom: 20px; /* This adds a margin to the top of each product card */
+        margin-bottom: 20px;
         }
 
         /* Style for the 'View' and 'Buy' buttons */
         .card-buttons {
             display: flex;
-            justify-content: space-between; /* This will space the buttons evenly */
+            justify-content: space-between;
         }
 
-        /* Adjust the padding and margin for the .container class */
         .container {
             padding: 0;
             margin-top: 2px;
         }
         .container-custom {
-            padding-left: 15px; /* Reduces the left padding of the container */
-            padding-right: 15px; /* Reduces the right padding of the container */
+            padding-left: 15px;
+            padding-right: 15px;
         }
-        @media (min-width: 992px) { /* Assuming you are using Bootstrap's large breakpoint */
+        @media (min-width: 992px) {
             .col-lg-3 {
                 flex: 0 0 auto;
-                width: 25%; /* Four products per row */
+                width: 25%;
             }
         }
 </style>
@@ -81,7 +80,6 @@
 
 <?php include 'header.php' ?>
 
-<!-- third -->
 <div class="bg-light mt-3">
     <h3 class="text-center">Ecommerce</h3>
     <p class="text-center">Selling fresh fruits and veggies!</p>
@@ -102,7 +100,14 @@
                                             class="card-img-top" alt="<?php echo $product['name']; ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $product['name']; ?></h5>
-                                    <p class="card-text"><?php echo $product['description']; ?></p>
+                                    <p class="card-text">
+                                        <?php 
+                                        echo (strlen($product['description']) > 100) 
+                                        ? mb_substr($product['description'], 0, 100) . "..."
+                                        : $product['description']; 
+                                        ?>
+                                    </p>
+
                                     <div class="card-buttons">
                                         <a href="details.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">Detail</a>
                                         <form method="POST" action="add_cart.php">

@@ -1,6 +1,7 @@
-<?php include 'session_validation.php'; ?>
+<?php include '../session_validation.php'; ?>
 <?php 
 include '../db.php'; 
+session_start();
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($_FILES["productImage"]["tmp_name"], $target_file);
     
     // Insert into database
-    $sql = "INSERT INTO products (name, category, description, price, image) VALUES ('$productName', '$productCategory', '$productDescription', '$productPrice', '$target_file')";
+    $sql = "INSERT INTO products (name, category, description, price, image) VALUES ('$prodctName', '$productCategory', '$productDescription', '$productPrice', '$target_file')";
 
     if ($conn->query($sql) === TRUE) {
         $success_message = "New record created successfully";
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include 'header.php'; ?>
 
 <div class="container mt-5">
-    <h2>Tambahkan Produk Baru</h2>
+    <h2>Add New Product</h2>
     <?php if(!empty($success_message)) { echo "<div class='alert alert-success'>$success_message</div>"; } ?>
     <?php if(!empty($error_message)) { echo "<div class='alert alert-danger'>$error_message</div>"; } ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">

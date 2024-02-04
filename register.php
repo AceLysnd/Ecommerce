@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'db.php'; // Make sure the path to your db.php file is correct
 
     // Extract and sanitize input
     $username = $conn->real_escape_string($_POST['username']);
@@ -124,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
     </form>
     <div class="mt-4 text-center">
-    Sudah punya akun? <a href="login.php" class="text-primary">Login</a>
+    Have an account? <a href="login.php" class="text-primary">Login</a>
 </div>
 </div>
 </div>

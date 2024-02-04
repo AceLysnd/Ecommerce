@@ -86,7 +86,7 @@ if (isset($_SESSION['register_success'])) {
                     </div>
                 </form>
                 <div class="mt-4 text-center">
-                    Belum punya akun? <a href="register.php" class="text-primary">Register</a>
+                    Don't have account? <a href="register.php" class="text-primary">Register</a>
                 </div>
             </div>
         </div>

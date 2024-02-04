@@ -104,7 +104,20 @@ $totalPrice = 0;
                 </tr>
             </tfoot>
         </table>
-        <a href="checkout.php" class="btn btn-success">Proceed to Checkout</a>
+        <form action="process_checkout.php" method="POST">
+            <div>
+                <label>
+                <input type="radio" name="payment_method" value="Prepaid" required> Prepaid
+                </label>
+            </div>
+            <div>
+                <label>
+                <input type="radio" name="payment_method" value="Postpaid" required> Postpaid
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+        </form>
+
         <form action="clear_cart.php" method="post" style="margin-top: 20px;">
             <button type="submit" class="btn btn-danger">Clear Cart</button>
         </form>

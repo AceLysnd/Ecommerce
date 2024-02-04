@@ -1,4 +1,4 @@
-<?php include 'session_validation.php'; ?>
+<?php include '../session_validation.php'; ?>
 <?php
 include '../db.php'; // Ensure this path is correct
 
@@ -113,13 +113,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
+<?php include 'header.php'; ?>
+
 <div class="container mt-5">
     <h2>Edit Product</h2>
     <form action="edit_product.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="productName" class="form-label">Nama Produk</label>
+            <label for="productName" class="form-label">Product Name</label>
             <input type="text" class="form-control" id="productName" name="productName" required value="<?php echo htmlspecialchars($productData['name']); ?>">
         </div>
         <div class="mb-3">
@@ -131,15 +135,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id'])) {
             </select>
         </div>
         <div class="mb-3">
-            <label for="productDescription" class="form-label">Deskripsi</label>
+            <label for="productDescription" class="form-label">Description</label>
             <textarea class="form-control" id="productDescription" name="productDescription" rows="3" required><?php echo htmlspecialchars($productData['description']); ?></textarea>
         </div>
         <div class="mb-3">
-            <label for="productPrice" class="form-label">Harga</label>
+            <label for="productPrice" class="form-label">Price</label>
             <input type="number" step="0.01" class="form-control" id="productPrice" name="productPrice" required value="<?php echo htmlspecialchars($productData['price']); ?>">
         </div>
         <div class="mb-3">
-            <label for="productImage" class="form-label">Foto Produk (Current: <?php echo htmlspecialchars($productData['image']); ?>)</label>
+            <label for="productImage" class="form-label">Product Image (Current: <?php echo htmlspecialchars($productData['image']); ?>)</label>
             <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Update Product</button>

@@ -74,7 +74,15 @@ foreach ($_SESSION['cart'] as $item) {
                     <p>Date: <?php echo date('Y-m-d'); ?></p>
                     <p>PayPal ID: <?php echo $userInfo['paypal_id']; ?></p>
                     <p>Bank Name: My Bank</p>
-                    <p>Method: Prepaid</p>
+                    <?php
+                        // Ensure there's a payment method selected
+                        if (isset($_SESSION['payment_method'])) {
+                        $paymentMethod = $_SESSION['payment_method'];
+                        echo "<p>Payment Method: " . htmlspecialchars($paymentMethod) . "</p>";
+                        } else {
+                            echo "<p>No payment method selected.</p>";
+                        }
+                    ?>
                 </div>
             </div>
             <table class="table">
