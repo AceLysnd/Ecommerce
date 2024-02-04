@@ -1,60 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <style>
-        .product {
-            border: 1px solid black;
-            padding: 20px;
-            margin: 10px;
-            display: inline-block;
-        }
-    </style>
-</head>
-<body>
+<?php
+$base_mem = memory_get_peak_usage();
+$start_time = microtime(true);
 
-<h1>Product Page</h1>
+include 'db.php';
+$sql = "SELECT id, name, description, image, price FROM products";
+// Check if a category is selected
+if (isset($_GET['category']) && $_GET['category'] != 'All') {
+$category = $conn->real_escape_string($_GET['category']);
+// Update SQL query to filter by the selected category
+$sql .= " WHERE category = '$category'";
+}   
+$result = $conn->query($sql);
 
-<div class="product">
-    <p>Product 1</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
+$products = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $products[] = $row;
+    }
+} else {
+    echo "0 results";
+} 
+foreach ($products as $product):
+    // $str = substr($product['image'], 1);
+    // echo $str;
+    // echo $product['name'];
+    // echo $product['name'];
+    // echo (strlen($product['description']) > 100) 
+    // ? mb_substr($product['description'], 0, 100) . "..."
+    // : $product['description']; 
+endforeach;
+$end_time = microtime(true);
+$extra_mem = memory_get_peak_usage();
 
-<div class="product">
-    <p>Product 2</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
+$total_time = $end_time - $start_time;
+$total_mem = $extra_mem - $base_mem;
 
-<div class="product">
-    <p>Product 3</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
-
-<h2>Product Category</h2>
-
-<div class="product">
-    <p>Product 4</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
-
-<div class="product">
-    <p>Product 5</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
-
-<div class="product">
-    <p>Product 6</p>
-    <button>View</button>
-    <button>Buy</button>
-</div>
-
-</body>
-</html>
+ob_end_flush();  
+echo "\nTotal Time: $total_time\n";
+echo "Total Mem Above Basline: $total_mem bytes\n";
+?>

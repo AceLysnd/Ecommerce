@@ -28,39 +28,6 @@ $totalPrice = 0;
         .navbar-nav .nav-link {
         color: white !important;
         }
-        .card-img-top {
-            height: 300px;
-            object-fit: cover;
-        }
-        .card-body {
-            flex-grow: 1;
-        }
-        .card {
-            width: 100%;
-            margin-bottom: 1rem;
-            padding-bottom: 5px;
-        }
-        .product-card {
-        margin-bottom: 20px;
-        }
-        .card-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-        .container {
-            padding: 0;
-            margin-top: 2px;
-        }
-        .container-custom {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        @media (min-width: 992px) {
-            .col-lg-3 {
-                flex: 0 0 auto;
-                width: 25%;
-            }
-        }
 </style>
 <body>
     <?php include 'header.php' ?>
